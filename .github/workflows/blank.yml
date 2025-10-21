@@ -1,0 +1,28 @@
+name: Push Branch Validator
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - master
+
+jobs:
+  validate-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar rama actual
+        run: echo "Rama actual:${{ github.ref_name }}"
+
+      - name: Check Branch Prefix
+        run: |
+          BRANCH="${{ github.ref_name }}"
+          echo "Validando nombre de rama: $BRANCH"
+
+          if echo "$BRANCH" | grep -Eq '^(feature|bugfix|hotfix)/'; then
+            echo "✅ Nombre de rama válido: $BRANCH"
+          else
+            echo "❌ Nombre de rama inválido. Usa prefijos válidos: feature/, bugfix/ o hotfix/"
+            exit 1
+          fi
+
+
