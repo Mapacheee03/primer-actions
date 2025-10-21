@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Mostrar rama actual
-        run: echo "Rama actual: ${{ github.ref_name }}"
+        run: echo "Rama actual:${{ github.ref_name }}"
 
       - name: Check Branch Prefix
         run: |
