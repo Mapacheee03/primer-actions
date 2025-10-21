@@ -24,3 +24,4 @@ jobs:
             echo "❌ Nombre de rama inválido. Usa prefijos válidos: feature/, bugfix/ o hotfix/"
             exit 1
           fi
+
